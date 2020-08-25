@@ -1,5 +1,7 @@
 package br.ce.wcaquino.tasks.functional;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -7,11 +9,14 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 
 public class Taskstest {
 	
 	public WebDriver acessarAplicacao() {
-		WebDriver driver = new ChromeDriver();
+    	WebDriver driver = new ChromeDriver();
 		driver.navigate().to("http://localhost:8081/tasks/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
@@ -21,8 +26,7 @@ public class Taskstest {
 	public  void deveSalvarTarefaComSucesso() {
 		WebDriver driver = acessarAplicacao();
 		try {
-		
-		
+				
 		    //clicar em Add Todo
 	        driver.findElement(By.id("addTodo")).click();
 	    
@@ -50,8 +54,7 @@ public class Taskstest {
 	public  void NaodeveSalvarTarefaSemDescricao() {
 		WebDriver driver = acessarAplicacao();
 		try {
-		
-		
+				
 		    //clicar em Add Todo
 	        driver.findElement(By.id("addTodo")).click();
 	    	        	    
